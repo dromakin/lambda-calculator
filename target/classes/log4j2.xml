@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <Console name="LogToConsole" target="SYSTEM_OUT">
+            <PatternLayout pattern="%m%n"/>
+        </Console>
+        <Console name="ErrorLogToConsole" target="SYSTEM_OUT">
+            <PatternLayout pattern="[%-6p] [%t] %c{3} %C{3}.%M(%F:%L) - %m%n"/>
+        </Console>
+    </Appenders>
+    <Loggers>
+
+        <Logger name="org.dromakin" level="info" >
+            <AppenderRef ref="LogToConsole"/>
+        </Logger>
+
+        <Root level="ERROR">
+            <AppenderRef ref="ErrorLogToConsole"/>
+        </Root>
+
+    </Loggers>
+</Configuration>
