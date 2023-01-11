@@ -26,7 +26,17 @@ public class Calculator {
     BinaryOperator<Integer> plus = Integer::sum;
     BinaryOperator<Integer> minus = (x, y) -> x - y;
     BinaryOperator<Integer> multiply = (x, y) -> x * y;
-    BinaryOperator<Integer> devide = (x, y) -> x / y;
+    BinaryOperator<Integer> devide = (x, y) -> {
+        try {
+            /*
+             Возникает деление на 0, поэтому имеет смысл обернуть деление в try/catch блок
+             */
+            return x / y;
+        } catch (ArithmeticException e) {
+            logger.error(e.getMessage(), e);
+            return x;
+        }
+    };
 
     UnaryOperator<Integer> pow = x -> x * x;
     UnaryOperator<Integer> abs = x -> x > 0 ? x : x * -1;
